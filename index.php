@@ -30,6 +30,8 @@
             <?php include "inc/home/about_me.htm"; ?>
             <!-- About this site -->
             <?php include "inc/home/about_site.htm"; ?>
+			<!-- Contacts -->
+			<?php include "inc/home/about_contacts.htm"; ?>
         </div><div style="clear: both;">&nbsp;</div></div>
 
     </div>
