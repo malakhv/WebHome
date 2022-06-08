@@ -18,25 +18,25 @@
 	<div id="wrapper">
 		
 		<!-- Include #header div -->
-		<?php include "inc/header.inc"; ?>
+		<?php include "layout/header.inc"; ?>
 		<!-- Include #menu div -->
-		<?php include "inc/menu.inc"; ?>
+		<?php include "layout/menu.inc"; ?>
 
         <!-- Page content -->
         <div id="page"><div id="content">
             <!-- Welcome -->
-            <?php include "inc/home/welcome.htm"; ?>
+            <?php include "content/home/welcome.htm"; ?>
             <!-- About me -->
-            <?php include "inc/home/about_me.htm"; ?>
+            <?php include "content/home/about_me.htm"; ?>
             <!-- About this site -->
-            <?php include "inc/home/about_site.htm"; ?>
+            <?php include "content/home/about_site.htm"; ?>
 			<!-- Contacts -->
-			<?php include "inc/home/about_contacts.htm"; ?>
+			<?php include "content/home/about_contacts.htm"; ?>
         </div><div style="clear: both;">&nbsp;</div></div>
 
     </div>
 
     <!-- Include #footer div -->
-    <?php include "inc/footer.htm"; ?>
+    <?php include "layout/footer.htm"; ?>
 
 </body></html>

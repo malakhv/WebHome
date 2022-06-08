@@ -17,21 +17,21 @@
 	<div id="wrapper">
 		
 		<!-- Include #header div -->
-		<?php include "inc/header.inc"; ?>
+		<?php include "layout/header.inc"; ?>
 		<!-- Include #menu div -->
-		<?php include "inc/menu.inc"; ?>
+		<?php include "layout/menu.inc"; ?>
 
 		<!-- Page content -->
 		<div id="page"><div id="content">
 			<!-- Include about post -->
-			<?php include "inc/projects/about.inc"; ?>
+			<?php include "content/projects/about.inc"; ?>
 			<!-- Include content post -->
-			<?php include "inc/projects/content.inc"; ?>
+			<?php include "content/projects/content.inc"; ?>
 		</div><div style="clear: both;">&nbsp;</div></div>
 	
 	</div>
 
 	<!-- Include #footer div -->
-	<?php include "inc/footer.inc"; ?>
+	<?php include "layout/footer.inc"; ?>
 
 </body></html>
