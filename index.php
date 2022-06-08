@@ -27,11 +27,11 @@
             <!-- Welcome -->
             <?php include "content/home/welcome.htm"; ?>
             <!-- About me -->
-            <?php include "content/home/about_me.htm"; ?>
-            <!-- About this site -->
-            <?php include "content/home/about_site.htm"; ?>
+			<?php include "content/home/about_me.htm"; ?>
 			<!-- Contacts -->
-			<?php include "content/home/about_contacts.htm"; ?>
+			<?php include "content/home/contacts.htm"; ?>
+            <!-- Copyright -->
+            <?php include "content/home/copyright.htm"; ?>
         </div><div style="clear: both;">&nbsp;</div></div>
 
     </div>
