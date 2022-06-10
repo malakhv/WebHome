@@ -6,5 +6,4 @@
     <li><a href="#">Media</a></li>
     <li><a href="links.php">Links</a></li>
     <li><a href="#">Tools</a></li>
-    <li><a href="copyright.php">Copyright</a></li>
 </ul></div>
