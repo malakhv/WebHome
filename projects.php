@@ -24,9 +24,9 @@
 		<!-- Page content -->
 		<div id="page"><div id="content">
 			<!-- Include about post -->
-			<?php include "content/projects/about.inc"; ?>
+			<?php include "content/projects/about.htm"; ?>
 			<!-- Include content post -->
-			<?php include "content/projects/content.inc"; ?>
+			<?php include "content/projects/content.htm"; ?>
 		</div><div style="clear: both;">&nbsp;</div></div>
 	
 	</div>

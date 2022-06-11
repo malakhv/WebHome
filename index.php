@@ -27,7 +27,7 @@
             <!-- Welcome -->
             <?php include "content/home/welcome.htm"; ?>
             <!-- About me -->
-			<?php include "content/home/about_me.htm"; ?>
+			<?php include "content/home/about.htm"; ?>
 			<!-- Contacts -->
 			<?php include "content/home/contacts.htm"; ?>
             <!-- Copyright -->
