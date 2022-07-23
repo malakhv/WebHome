@@ -17,9 +17,9 @@
     <div id="wrapper">
 		
         <!-- Include #header div -->
-        <?php include "layout/header.inc"; ?>
+        <?php include "layout/header.htm"; ?>
         <!-- Include #menu div -->
-        <?php include "layout/menu.inc"; ?>
+        <?php include "layout/menu.htm"; ?>
 
         <!-- Page content -->
         <div id="page"><div id="content">
@@ -29,7 +29,7 @@
 	
     </div>
 
-    <!-- Include #footer div -->
-    <?php include "layout/footer.inc"; ?>
+    <!-- Include footer -->
+    <?php include "layout/footer.htm"; ?>
 
 </body></html>
