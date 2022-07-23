@@ -25,7 +25,7 @@
         <!-- Page content -->
         <div id="page"><div id="content">
             <!-- Include content post -->
-            <?php include "content/stub.htm"; ?>
+            <?php include "content/software/os.htm"; ?>
         </div><div style="clear: both;">&nbsp;</div></div>
 	
     </div>
