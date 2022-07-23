@@ -10,7 +10,7 @@
 		<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     	<link rel="icon" href="/media/favicon.ico" type="image/x-icon">
     	<link rel="shortcut icon" href="/media/favicon.ico" type="image/x-icon">
-    	<title>Mikhan's Home</title>
+    	<title>Mikhail's Home in Web</title>
 	</head>
 
 <body>
