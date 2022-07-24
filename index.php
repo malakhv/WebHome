@@ -2,16 +2,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-	<!-- The page header -->
-	<head>
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-    	<link rel="icon" href="/media/favicon.png" type="image/png">
-    	<link rel="shortcut icon" href="/media/favicon.png" type="image/png">
-    	<title>Mikhail's Home in Web</title>
-	</head>
+<!-- Common things to make a pages -->
+<?php include "layout/layout.php"; ?>
+
+<!-- The page header -->
+<?php MakePageHeader("Mikhail's Home in Web") ?>
 
 <body>
 
