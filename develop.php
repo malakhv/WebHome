@@ -25,6 +25,7 @@
             <?php include "content/develop/db.htm"; ?>
             <?php include "content/develop/web.htm"; ?>
             <?php include "content/develop/ide.htm"; ?>
+            <?php include "content/develop/vcs.htm"; ?>
         </div><div style="clear: both;">&nbsp;</div></div>
 	
     </div>
