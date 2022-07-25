@@ -21,7 +21,8 @@
         <div id="page"><div id="content">
             <!-- Content -->
             <?php include "content/links/android.htm"; ?>
-            <?php include "content/links/content.htm"; ?>
+            <?php include "content/links/linux.htm"; ?>
+            <?php include "content/links/microsoft.htm"; ?>
         </div><div style="clear: both;">&nbsp;</div></div>
 
 	</div>
