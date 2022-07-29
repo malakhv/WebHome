@@ -5,17 +5,17 @@
 <!-- Common things to make a pages -->
 <?php include "layout/layout.php"; ?>
 
-<!-- The page header -->
+<!-- The page head -->
 <?php MakePageHeader("Mikhail's Curriculum Vitae") ?>
 
 <body>
 
     <div id="wrapper">
-		
+
         <!-- Include #header div -->
         <?php include "layout/header.htm"; ?>
         <!-- Include #menu div -->
-        <?php include "layout/menu.htm"; ?>
+        <?php include "layout/red/menu.htm"; ?>
 
         <!-- Page content -->
         <div id="page"><div id="content">
@@ -23,7 +23,7 @@
             <?php include "content/home/cv.htm"; ?>
             <?php include "content/stub.htm"; ?>
         </div><div style="clear: both;">&nbsp;</div></div>
-	
+
     </div>
 
     <!-- Include footer -->
