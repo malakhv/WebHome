@@ -6,7 +6,7 @@
 <?php include "layout/layout.php"; ?>
 
 <!-- The page head -->
-<?php MakePageHeader("Mikhail's Curriculum Vitae") ?>
+<?php MakeHtmlHead("Mikhail's Curriculum Vitae") ?>
 
 <body>
 

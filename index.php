@@ -6,7 +6,7 @@
 <?php include "layout/layout.php"; ?>
 
 <!-- The page header -->
-<?php MakePageHeader("Mikhail's Home in Web") ?>
+<?php MakeHtmlHead("Mikhail's Home in Web") ?>
 
 <body>
 
