@@ -2,7 +2,7 @@
 
 # Make a page head with specific title, theme, keywords and description
 function MakeHtmlHead($title, $keywords = '', $description = '') {
-    $theme = "red";
+    $theme = "lite";
     echo '<head>';
     echo '<meta name="keywords" content="'.$keywords.'" />';
     echo '<meta name="description" content="'.$description.'" />';
@@ -12,6 +12,22 @@ function MakeHtmlHead($title, $keywords = '', $description = '') {
     echo '<link rel="shortcut icon" href="/media/favicon.png" type="image/png">';
     echo '<title>'.$title.'</title>';
     echo '</head>';
+}
+
+# Make page header (header and menu)
+function MakePageHeader() {
+    $theme = "lite";
+    // Include #header div
+    include 'layout/'.$theme.'/header.htm';
+    // Include #menu div
+    include 'layout/'.$theme.'/menu.htm';
+}
+
+# Make page footer
+function MakePageFooter() {
+    $theme = "lite";
+    // Include footer
+    include 'layout/'.$theme.'/footer.htm';
 }
 
 ?>

@@ -12,10 +12,8 @@
 
     <div id="wrapper">
 
-        <!-- Include #header div -->
-        <?php include "layout/header.htm"; ?>
-        <!-- Include #menu div -->
-        <?php include "layout/red/menu.htm"; ?>
+        <!-- Page header (and menu) -->
+        <?php MakePageHeader(); ?>
 
         <!-- Page content -->
         <div id="page"><div id="content">
@@ -26,7 +24,7 @@
 
     </div>
 
-    <!-- Include footer -->
-    <?php include "layout/footer.htm"; ?>
+    <!-- Page footer -->
+    <?php MakePageFooter(); ?>
 
 </body></html>
