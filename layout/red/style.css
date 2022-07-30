@@ -56,7 +56,7 @@ a:hover {
 	width: 910px;
 	height: 100px;
 	margin: 0 auto;
-	background: url(media/layout/header.jpg) no-repeat left top;
+	background: url(media/header.jpg) no-repeat left top;
 }
 
 /* Logo */
@@ -134,7 +134,7 @@ a:hover {
 	margin: 0 auto;
 	padding: 0;
 	/* background: url(images/img02.jpg) no-repeat left top; */
-	background: url(media/layout/menu.jpg) no-repeat left top;
+	background: url(media/menu.jpg) no-repeat left top;
 }
 
 #menu ul {
@@ -173,7 +173,7 @@ a:hover {
 #page {
 	width: 910px;
 	margin: 0 auto;
-	background: url(media/layout/page.jpg) no-repeat left top;
+	background: url(media/page.jpg) no-repeat left top;
 }
 
 /* Content */
