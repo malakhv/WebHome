@@ -1,0 +1,27 @@
+@media (max-width: 900px) {
+    #content {
+        padding-left: 0.5em;
+    }
+    #toc {
+        font-size: larger;
+    }
+    #toc span.icon {
+        visibility: visible;
+        display: inline;
+    }
+    #toc span.content {
+        visibility: hidden; display: none
+    }
+    #toc:hover {
+        width: inherit;
+        height: inherit;
+    }
+    #toc:hover span.icon {
+        visibility: hidden;
+        display: none;
+    }
+    #toc:hover span.content {
+        visibility: visible;
+        display: inline;
+    }
+}
