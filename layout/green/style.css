@@ -1,8 +1,7 @@
 body {
 	text-align: center;
-	background: url(bg.png);
-	background-repeat: repeat;
-  }
+	background: #F5F5F5;
+}
   #header {
 	display: inline-block;
 	padding-left: 1em;
