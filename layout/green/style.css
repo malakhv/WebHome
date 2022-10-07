@@ -1,9 +1,11 @@
 body {
 	text-align: center;
 	background: #F5F5F5;
+    font-family: "Calibri Light", Arial, Helvetica, sans-serif;
 }
-  #header {
-	display: inline-block;
+
+#header {
+    display: inline-block;
 	padding-left: 1em;
 	padding-right: 1em;
 	max-width: 120ex;
@@ -13,8 +15,9 @@ body {
 	background: #48681B;
 	border: solid 1px #CCC;
 	box-shadow: 3px 3px 3px #ccc;    
-  }
-  #menu {
+}
+
+#menu {
 	display: inline-block;
 	padding-left: 1em;
 	padding-right: 1em;
@@ -28,24 +31,29 @@ body {
 	border-right: solid 1px #CCC;
 	border-bottom: solid 1px #CCC;
 	box-shadow: 3px 3px 3px #ccc;    
-  }
-  #menu-link {
+}
+
+#menu-link {
 	color: #48681B;
-  }
-  #content {
+}
+
+#content {
 	display: inline-block;
 	padding-left: 1em;
 	padding-right: 1em;
 	max-width: 120ex;
 	min-width: 120ex;
-	text-align: left;
+	text-align: justify;
 	background: white;
 	border: solid 1px #CCC;
 	box-shadow: 3px 3px 3px #ccc; 
-  }
-  .key { font-size: smaller; font-style: italic }
-  .subtitle {
+}
+
+.key { font-size: smaller; font-style: italic }
+
+.subtitle {
 	font-style: italic;
 	text-align: center;
-  }
-  a img { border-width: 0; border: none }
+}
+
+a img { border-width: 0; border: none }
