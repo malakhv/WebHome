@@ -1,0 +1,47 @@
+#---------------------------------------------------------------------------------------------------
+# [DESCRIPTION]
+#---------------------------------------------------------------------------------------------------
+
+ <ul>
+            <li><a target="_blank" href="https://developer.android.com/studio/">Android Studio</a></li>
+            <li><a target="_blank" href="https://calibre-ebook.com/">Calibre E-Book</a></li>
+            <li>SQLite Browser</li>
+            <li><a target="_blank" href="http://dia-installer.de/">Dia</a> (diagram editor)</li>
+            <li> <a target="_blank" href="https://www.docker.com/">Docker</a></li>
+            <li><a target="_blank" href="https://filezilla-project.org/">FileZilla</a></li>
+            <li><a target="_blank" href="https://www.pinta-project.com/">Pinta</a> and
+                <a target="_blank" href="https://www.gimp.org/">GIMP</a></li>
+            <li><a target="_blank" href="https://meldmerge.org/">Meld</a> (diff tool)</li>
+            <li> <a target="_blank" href="https://www.microsoft.com/">Microsoft Edge</a></li>
+            <li><a target="_blank" href="https://telegram.org/">Telegram</a></li>
+            <li><a target="_blank" href="https://www.videolan.org/vlc/">VLC Media Player</a></li>
+            <li><a target="_blank" href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+            <li><a target="_blank" href="https://www.wps.com/">WPS Office</a></li>
+
+
+            <li><a target="_blank" href="https://zoom.us/">Zoom</a></li>
+
+            <li><a target="_blank" href="https://www.eclipse.org/">Eclipse</a> IDE</li>
+            
+
+            <li><a target="_blank" href=""></a></li>
+
+        </ul>
+
+
+        <p>Bellow, you could see a list of software that I use on Ubuntu OS (by category).</p>
+
+        This is a general software that I use on all my computers and operating systems: 
+
+        <b>Common:</b>
+        <ul>
+            <li><a target="_blank" href="https://filezilla-project.org/">FileZilla</a></li>
+            <li><a target="_blank" href="https://www.mozilla.org/firefox/">Firefox</a></li>
+            <li><a target="_blank" href="https://www.microsoft.com/">Microsoft Edge</a></li>
+            <li><a target="_blank" href="https://telegram.org/">Telegram</a></li>
+            <li><a target="_blank" href="https://zoom.us/">Zoom</a></li>
+        </ul>
+
+
+
+#---------------------------------------------------------------------------------------------------
