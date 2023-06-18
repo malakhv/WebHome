@@ -140,8 +140,8 @@ table.menu td {
     min-width: 110ex;
     text-align: justify;
     background: white;
-    /* border: solid 1px #CCC;
-    box-shadow: 3px 3px 3px #ccc; */
+    border: solid 1px #CCC;
+    box-shadow: 3px 3px 3px #ccc;
 }
 
 #footer {
