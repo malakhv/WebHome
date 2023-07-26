@@ -14,7 +14,7 @@
 
     <!-- Page content -->
     <?php
-        IncludeContent('develop/content.htm');
+        IncludeContent('software/content.htm');
     ?>
 
     <!-- Footer -->
