@@ -2,25 +2,18 @@
 
 <html>
 
-    <!-- The page html header -->
-    <?php MakeHtmlHead(); ?>
+<?php MakeHtmlHead(getPageTitle()); ?>
 
 <body><div id="content">
 
-    <!-- Header -->
-    <?php InsertPageHeader(); ?>
-    <!-- Menu -->
-    <?php InsertMenu(); ?>
+<?php
+    InsertPageHeader();
+    InsertMenu();
+    ApplyContent();
+?>
 
-    <!-- Page content -->
-    <?php
-        IncludeContent('home/welcome.htm');
-        IncludeContent('home/about.htm');
-        IncludeContent('home/contacts.htm');
-        IncludeContent('home/copyright.htm');
-    ?>
-
-    <!-- Footer -->
-    <?php InsertPageFooter(); ?>
+<?php
+    InsertPageFooter();
+?>
 
 </div></body></html>

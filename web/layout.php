@@ -1,13 +1,11 @@
 <?php
 
-define('THEME_NAME', 'simple');
-
 function IncludeContent($href) {
     include ROOT_VIEW.'/'.$href;
 }
 
 function IncludeLayout($name) {
-    include ROOT_LAYOUT.'/'.THEME_NAME.'/'.$name;
+    include ROOT_LAYOUT.'/'.THEME.'/'.$name;
 }
 
 /**
@@ -21,7 +19,7 @@ function MakeHtmlHead($title = 'Mikhail Malakhov', $keywords = '', $description 
     echo '  <meta name="keywords" content="'.$keywords.'" />'.PHP_EOL;
     echo '  <meta name="description" content="'.$description.'" />'.PHP_EOL;
     echo '  <meta http-equiv="content-type" content="text/html; charset=utf-8" />'.PHP_EOL;
-    echo '  <link href="./web/layout/'.THEME_NAME.'/style.css" rel="stylesheet" type="text/css" media="screen" />'.PHP_EOL;
+    echo '  <link href="./web/layout/'.THEME.'/style.css" rel="stylesheet" type="text/css" media="screen" />'.PHP_EOL;
     echo '  <link rel="icon" href="./web/media/fav-128.png" type="image/png">'.PHP_EOL;
     echo '  <link rel="shortcut icon" href="./web/media/fav-256.png" type="image/png">'.PHP_EOL;
     echo '  <title>'.$title.'</title>'.PHP_EOL;
