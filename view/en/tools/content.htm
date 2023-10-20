@@ -1,4 +1,30 @@
-<h2>Empty page</h2>
-<p>
-    This page is under construction. Sorry...
-</p>
+<h2>Notepad</h2>
+
+<script>
+
+    function saveNote() {
+      var note = document.getElementById("note").value;
+      localStorage.setItem("note", note);
+    }
+     
+    function clearNote() {
+      document.getElementById("note").value = "";
+    }
+    
+    
+</script>
+
+<textarea id="note" rows="15" cols="104" spellcheck="true">
+Put your text here...
+</textarea><br>&nbsp;
+
+<table align="right">
+    <tr>
+       <td align="right">
+            <button onclick="saveNote()">Save</button>
+            <button onclick="clearNote()">Clear</button>
+       </td> 
+    </tr>
+</table>
+<p>&nbsp;</p>
+
