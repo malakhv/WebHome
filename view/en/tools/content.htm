@@ -1,5 +1,4 @@
-<h1>Notepad</h1>
-
+<h2>Notepad</h2>
 <p>
     This is a simple notepad without text formatting (will be added later),
     but with spelling checking.
@@ -9,7 +8,7 @@
 
     function saveNote() {
       var note = document.getElementById("note").value;
-      localStorage.setItem("note", note);
+      localStorage.setItem("note", note);  
     }
 
     function loadNote() {
@@ -20,7 +19,7 @@
     }
 
     function downloadNote() {
-        var note = document.getElementById("note").value;
+        var note = document.getElementById("noteNew").value;
         var link = document.createElement("a");
         link.download = "my-note.txt";
         var data = new Blob([note], {
@@ -31,11 +30,31 @@
         link.remove();
     }
 
+    function downloadNoteNew() {
+        var note = document.getElementById("noteNew");
+        htmlContent = note.innerHTML;
+        richContent = convertHtmlToRtf(htmlContent);
+        var link = document.createElement("a");
+        link.download = "my-note.rtf";
+        var data = new Blob([richContent], {
+            type: "text/rtf"
+        });
+        link.href = window.URL.createObjectURL(data);
+        link.click();
+        link.remove();
+    }
+    
     function clearNote() {
         if (confirm('Are you sure you want to clear text?')) {
             document.getElementById("note").value = "";
             saveNote();
         }
+    }
+
+    function formatText() {
+        var content = document.getElementById("note");
+        //content.style.fontStyle = "italic";
+        content.html("<b>Bold<b> text");
     }
 
     window.onload = function winLoad() {
@@ -50,17 +69,91 @@
         saveNote();
     }
 
+    function convertHtmlToRtf(html) {
+  if (!(typeof html === "string" && html)) {
+      return null;
+  }
+  var tmpRichText, hasHyperlinks;
+  var richText = html;
+  // Singleton tags
+  richText = richText.replace(/<(?:hr)(?:\s+[^>]*)?\s*[\/]?>/ig, "{\\pard \\brdrb \\brdrs \\brdrw10 \\brsp20 \\par}\n{\\pard\\par}\n");
+  richText = richText.replace(/<(?:br)(?:\s+[^>]*)?\s*[\/]?>/ig, "{\\pard\\par}\n");
+  // Empty tags
+  richText = richText.replace(/<(?:p|div|section|article)(?:\s+[^>]*)?\s*[\/]>/ig, "{\\pard\\par}\n");
+  richText = richText.replace(/<(?:[^>]+)\/>/g, "");
+  // Hyperlinks
+  richText = richText.replace(
+      /<a(?:\s+[^>]*)?(?:\s+href=(["'])(?:javascript:void\(0?\);?|#|return false;?|void\(0?\);?|)\1)(?:\s+[^>]*)?>/ig,
+      "{{{\n");
+  tmpRichText = richText;
+  richText = richText.replace(
+      /<a(?:\s+[^>]*)?(?:\s+href=(["'])(.+)\1)(?:\s+[^>]*)?>/ig,
+      "{\\field{\\*\\fldinst{HYPERLINK\n \"$2\"\n}}{\\fldrslt{\\ul\\cf1\n");
+  hasHyperlinks = richText !== tmpRichText;
+  richText = richText.replace(/<a(?:\s+[^>]*)?>/ig, "{{{\n");
+  richText = richText.replace(/<\/a(?:\s+[^>]*)?>/ig, "\n}}}");
+  // Start tags
+  richText = richText.replace(/<(?:b|strong)(?:\s+[^>]*)?>/ig, "{\\b\n");
+  richText = richText.replace(/<(?:i|em)(?:\s+[^>]*)?>/ig, "{\\i\n");
+  richText = richText.replace(/<(?:u|ins)(?:\s+[^>]*)?>/ig, "{\\ul\n");
+  richText = richText.replace(/<(?:strike|del)(?:\s+[^>]*)?>/ig, "{\\strike\n");
+  richText = richText.replace(/<sup(?:\s+[^>]*)?>/ig, "{\\super\n");
+  richText = richText.replace(/<sub(?:\s+[^>]*)?>/ig, "{\\sub\n");
+  richText = richText.replace(/<(?:p|div|section|article)(?:\s+[^>]*)?>/ig, "{\\pard\n");
+  // End tags
+  richText = richText.replace(/<\/(?:p|div|section|article)(?:\s+[^>]*)?>/ig, "\n\\par}\n");
+  richText = richText.replace(/<\/(?:b|strong|i|em|u|ins|strike|del|sup|sub)(?:\s+[^>]*)?>/ig, "\n}");
+  // Strip any other remaining HTML tags [but leave their contents]
+  richText = richText.replace(/<(?:[^>]+)>/g, "");
+  // Prefix and suffix the rich text with the necessary syntax
+  richText =
+      "{\\rtf1\\ansi\n" + (hasHyperlinks ? "{\\colortbl\n;\n\\red0\\green0\\blue255;\n}\n" : "") + richText +  "\n}";
+  return richText;
+}
+
 </script>
 
 <!-- rows="15" cols="104" -->
-<textarea id="note" spellcheck="true" rows="15"
-    placeholder="Put your text here..."></textarea><br>&nbsp;
+<textarea id="note" spellcheck="true" rows="15" oninput="render()" 
+    placeholder="Put your text here..." hidden="true"></textarea><br>&nbsp;
+
+<table align="right" hidden="true">
+    <tr>
+       <td>
+            <button onclick="clearNote()">Clear</button>
+            <button onclick="formatText()">Format</button>
+            <button onclick="downloadNoteNew()">Download</button>
+       </td>
+    </tr>
+</table>
+
+<table align="left">
+    <tr>
+       <td>
+        <button onclick="document.execCommand('bold');"><b>B</b></button>
+        <button onclick="document.execCommand('italic');"><i>I</i></button>
+        <button onclick="document.execCommand('underline');"><u>U</u></button>
+        &nbsp;
+        <button onclick="document.execCommand('heading', false, 'H1');">H1</button>
+        <button onclick="document.execCommand('heading', false, 'H2');">H2</button>
+        <button onclick="document.execCommand('heading', false, 'H3');">H3</button>
+        <button onclick="document.execCommand('heading');">Text</button>
+        &nbsp;
+        <button onclick="document.execCommand('decreaseFontSize');">A</button>
+        <button onclick="document.execCommand('decreaseFontSize');"><span>A</span></button>
+        
+       </td>
+    </tr>
+</table>
+<br>
+&nbsp;
+<div class="editable" contenteditable="true" spellcheck="true" id="noteNew"
+    placeholder="Put your text here..."></div>
 
 <table align="right">
     <tr>
        <td>
-            <button onclick="clearNote()">Clear</button>
-            <button onclick="downloadNote()">Download</button>
+        <button onclick="downloadNoteNew()">Download</button>
        </td>
     </tr>
 </table>
@@ -68,3 +161,4 @@
 <br>
 &nbsp;
 <br>
+

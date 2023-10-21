@@ -136,6 +136,14 @@ textarea:active {
     border: solid 1px silver;
 }
 
+.editable {
+    width: 98.5%;
+    height: 200px;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 0.4em;
+}
+
 .header-sup {
     font-size: 0.7em;
     font-style: italic;
