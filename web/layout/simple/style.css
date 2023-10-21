@@ -121,6 +121,21 @@ table.menu {
     margin-right: auto;
 }
 
+textarea {
+    resize: none;
+    font-size: 1em;
+    margin: auto;
+    outline: none;
+    padding: 0.4em;
+    width: 98.5%;
+    align-self: center;
+    border: solid 1px silver;
+}
+
+textarea:active {
+    border: solid 1px silver;
+}
+
 .header-sup {
     font-size: 0.7em;
     font-style: italic;
