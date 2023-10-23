@@ -42,18 +42,6 @@
         console.log('WebPad - clearData');
     }
 
-    function downloadNote() {
-        var note = document.getElementById("noteNew").value;
-        var link = document.createElement("a");
-        link.download = "my-note.txt";
-        var data = new Blob([note], {
-            type: "text/plain"
-        });
-        link.href = window.URL.createObjectURL(data);
-        link.click();
-        link.remove();
-    }
-
     function downloadFile() {
         var text = '';
         var format = VFormat.value;
@@ -82,19 +70,31 @@
         link.remove();
     }
 
-    function insertDate() {
-        var n = new Date();
-        var m = n.getMonth();
-        var d = n.getDate();
-        var h = n.getHours();
-        if (d < 10) d = '0' + d;
-        if (m < 10) m = '0' + m;
-        if (h < 10) h = '0' + h;
-        var text = '[' + d + '.' + m + '.' + n.getFullYear() + ' - ';
-        m = n.getMinutes();
-        if (m < 10) m = '0' + m;
-        text += h + ':' + m + ']';
-        document.execCommand('insertText', false, text);
+    function insertDateTime() {
+        var str = '[';
+        var now = new Date();
+        
+        // Day
+        var v = now.getDate();
+        if (v < 10) str += '0';
+        str += v + '.';
+        
+        // Month and Year
+        v = now.getMonth();
+        if (v < 10) str += '0';
+        str += v + '.' + now.getFullYear() + ' - ';
+        
+        // Hours
+        v = now.getHours();
+        if (v < 10) str += '0';
+        str += v + ':';
+        
+        // Minutes
+        v = now.getMinutes();
+        if (v < 10) str += '0';
+        str += v + ']';
+        
+        document.execCommand('insertText', false, str);
     }
 
     function formatText() {
