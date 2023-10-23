@@ -8,20 +8,27 @@
 
 <script>
 
-    var MyNote;
+    const VIEW_ID_EDITOR = 'webpad-editor';
+    const VIEW_ID_FORMAT = 'webpad-format';
+
+    const STORAGE_KEY_DATA = 'webpad-data';
+    const STORAGE_KEY_FORMAT = 'webpad-format';
+
+    var VEditor;
+    var VFormat;
 
     function saveNote() {
-      var data = MyNote.innerHTML;
-      localStorage.setItem("noteNew", data);
-      console.log('saveNote');
+      var data = VEditor.innerHTML;
+      localStorage.setItem(VEditor.id, data);
+      console.log('WebPad - saveNote');
     }
 
     function loadNote() {
-        var data = localStorage.getItem("noteNew");
+        var data = localStorage.getItem(VEditor.id);
         if (data) {
-            MyNote.innerHTML = data;
+            VEditor.innerHTML = data;
         }
-        console.log('loadNote');
+        console.log('WebPad - loadNote');
     }
 
     function downloadNote() {
@@ -93,7 +100,8 @@
     }
 
     window.onload = function winLoad() {
-        MyNote = document.getElementById("noteNew");
+        VEditor = document.getElementById(VIEW_ID_EDITOR);
+        VFormat = document.getElementById(VIEW_ID_FORMAT);
         loadNote();
     };
 
@@ -167,48 +175,48 @@
     </tr>
 </table>
 
-<table class="controls" border="0">
-    <tr>
-       <td align="left">
-            <button onclick="document.execCommand('bold');"><b>B</b></button>
-            <button onclick="document.execCommand('italic');"><i>I</i></button>
-            <button onclick="document.execCommand('underline');"><u>U</u></button>
-            &nbsp;
-            <button onclick="document.execCommand('heading', false, 'H1');">H1</button>
-            <button onclick="document.execCommand('heading', false, 'H2');">H2</button>
-            <button onclick="document.execCommand('heading', false, 'H3');">H3</button>
-            <button onclick="saveNote();">Text</button>
-            &nbsp;
-            <button onclick="document.execCommand('decreaseFontSize');">A</button>
-            <button onclick="document.execCommand('decreaseFontSize');"><span>A</span></button>
-            &nbsp;
-            <button onclick="insertDate()">Now</button>
-       </td>
-       <td align="right">
-            <button onclick="clearNote()">Clear</button>
-       </td>
-    </tr>
-</table>
+<!-- Controls -->
+<table class="controls" border="0"><tr>
+<td align="left">
+    <!-- Text format (bold, italic, underline) -->
+    <button onclick="document.execCommand('bold');"><b>B</b></button>
+    <button onclick="document.execCommand('italic');"><i>I</i></button>
+    <button onclick="document.execCommand('underline');"><u>U</u></button>
+    &nbsp;
+    <!-- Headers -->
+    <button onclick="document.execCommand('heading', false, 'H1');">H1</button>
+    <button onclick="document.execCommand('heading', false, 'H2');">H2</button>
+    <button onclick="document.execCommand('heading', false, 'H3');">H3</button>
+    <button onclick="saveNote();">Save</button>
+    &nbsp;
+    <!-- Font size -->
+    <button onclick="document.execCommand('decreaseFontSize');">A</button>
+    <button onclick="document.execCommand('decreaseFontSize');"><span>A</span></button>
+    &nbsp;
+    <!-- Insert any stuff -->
+    <button onclick="insertDate()">Now</button>
+</td>
+<td align="right">
+    <!-- Clear data -->
+    <button onclick="clearNote()">Clear</button>
+</td></tr></table>
 
-<div class="editable" contenteditable="true" spellcheck="true" id="noteNew"
-    placeholder="Put your text here..."></div>
+<!-- VEditor -->
+<div class="editable" contenteditable="true" spellcheck="true"
+    id="webpad-editor" placeholder="Put your text here...">
+</div>
 
-<table align="right" border="0">
-    <tr>
-       <td>
-        <select title="Format" name="format" id="format">
-            <option value="txt">Plain text</option>
-            <option value="rtf">Rich text</option>
-            <option value="md">Markdown</option>
-            <option value="htm">HTML markup</option>
-        </select>
-        &nbsp;
-        <button onclick="downloadNoteNew();">Download</button>
-       </td>
-    </tr>
-</table>
-&nbsp;
-<br>
-&nbsp;
-<br>
+<!-- Controls -->
+<table align="right" border="0"><tr><td>
+    <!-- VFormat -->
+    <select title="Format" name="format" id="format">
+        <option value="txt">Plain text</option>
+        <option value="rtf">Rich text</option>
+        <option value="md">Markdown</option>
+        <option value="htm">HTML markup</option>
+    </select>&nbsp;
+    <!-- Download -->
+    <button onclick="downloadNoteNew();">Download</button>
+</td></tr></table>
 
+&nbsp;<br>&nbsp;<br>
