@@ -27,6 +27,13 @@
         }
         console.log('WebPad - loadNote');
     }
+    
+    function clearData() {
+        if (confirm('Are you sure you want to clear text?')) {
+            document.getElementById("note").value = "";
+            saveData();
+        }
+    }
 
     function downloadNote() {
         var note = document.getElementById("noteNew").value;
@@ -66,13 +73,6 @@
         link.href = window.URL.createObjectURL(data);
         link.click();
         link.remove();
-    }
-    
-    function clearNote() {
-        if (confirm('Are you sure you want to clear text?')) {
-            document.getElementById("note").value = "";
-            saveNote();
-        }
     }
 
     function insertDate() {
@@ -165,7 +165,7 @@
 <table align="right" hidden="true">
     <tr>
        <td>
-            <button onclick="clearNote()">Clear</button>
+            <button onclick="clearData()">Clear</button>
             <button onclick="formatText()">Format</button>
             <button onclick="downloadNoteNew()">Download</button>
        </td>
@@ -195,7 +195,7 @@
 </td>
 <td align="right">
     <!-- Clear data -->
-    <button onclick="clearNote()">Clear</button>
+    <button onclick="clearData()">Clear</button>
 </td></tr></table>
 
 <!-- VEditor -->
