@@ -1,21 +1,27 @@
 <h2>Notepad</h2>
+
 <p>
-    This is a simple notepad without text formatting (will be added later),
-    but with spelling checking.
+    This is a simple notepad without text formatting (will be added later) and
+    with spell check feature. Notepad doesn't send the entered text anywhere,
+    but only saves it in a secure local storage.
 </p>
 
 <script>
 
+    var MyNote;
+
     function saveNote() {
-      var note = document.getElementById("note").value;
-      localStorage.setItem("note", note);  
+      var data = MyNote.innerHTML;
+      localStorage.setItem("noteNew", data);
+      console.log('saveNote');
     }
 
     function loadNote() {
-        var note = localStorage.getItem("note");
-        if (note) {
-            document.getElementById("note").value = note;
+        var data = localStorage.getItem("noteNew");
+        if (data) {
+            MyNote.innerHTML = data;
         }
+        console.log('loadNote');
     }
 
     function downloadNote() {
@@ -32,12 +38,24 @@
 
     function downloadNoteNew() {
         var note = document.getElementById("noteNew");
-        htmlContent = note.innerHTML;
-        richContent = convertHtmlToRtf(htmlContent);
+        var format = document.getElementById("format").value;
+        var content = '';
+        
+        if (format == 'rtf' || format == 'htm') {
+            content = note.innerHTML;
+            if (format == 'rtf') {
+                content = convertHtmlToRtf(content);
+            }
+        } else {
+            content = note.outerText;
+            content = content.replace(/\n\n/g, '\n');
+            format = 'plain';
+        }
+        
         var link = document.createElement("a");
-        link.download = "my-note.rtf";
-        var data = new Blob([richContent], {
-            type: "text/rtf"
+        link.download = "my-note." + format;
+        var data = new Blob([content], {
+            type: "text/" + format
         });
         link.href = window.URL.createObjectURL(data);
         link.click();
@@ -51,6 +69,21 @@
         }
     }
 
+    function insertDate() {
+        var n = new Date();
+        var m = n.getMonth();
+        var d = n.getDate();
+        var h = n.getHours();
+        if (d < 10) d = '0' + d;
+        if (m < 10) m = '0' + m;
+        if (h < 10) h = '0' + h;
+        var text = '[' + d + '.' + m + '.' + n.getFullYear() + ' - ';
+        m = n.getMinutes();
+        if (m < 10) m = '0' + m;
+        text += h + ':' + m + ']';
+        document.execCommand('insertText', false, text);
+    }
+
     function formatText() {
         var content = document.getElementById("note");
         //content.style.fontStyle = "italic";
@@ -58,6 +91,7 @@
     }
 
     window.onload = function winLoad() {
+        MyNote = document.getElementById("noteNew");
         loadNote();
     };
 
@@ -66,6 +100,10 @@
     };
 
     window.onclose = function winClose() {
+        saveNote();
+    }
+
+    window.onbeforeunload = function winBeforeUnload() {
         saveNote();
     }
 
@@ -114,8 +152,8 @@
 </script>
 
 <!-- rows="15" cols="104" -->
-<textarea id="note" spellcheck="true" rows="15" oninput="render()" 
-    placeholder="Put your text here..." hidden="true"></textarea><br>&nbsp;
+<textarea id="note" spellcheck="true" hidden="true" rows="15" oninput="render()" 
+    placeholder="Put your text here..."></textarea>
 
 <table align="right" hidden="true">
     <tr>
@@ -127,33 +165,43 @@
     </tr>
 </table>
 
-<table align="left">
+<table class="controls" border="0">
     <tr>
-       <td>
-        <button onclick="document.execCommand('bold');"><b>B</b></button>
-        <button onclick="document.execCommand('italic');"><i>I</i></button>
-        <button onclick="document.execCommand('underline');"><u>U</u></button>
-        &nbsp;
-        <button onclick="document.execCommand('heading', false, 'H1');">H1</button>
-        <button onclick="document.execCommand('heading', false, 'H2');">H2</button>
-        <button onclick="document.execCommand('heading', false, 'H3');">H3</button>
-        <button onclick="document.execCommand('heading');">Text</button>
-        &nbsp;
-        <button onclick="document.execCommand('decreaseFontSize');">A</button>
-        <button onclick="document.execCommand('decreaseFontSize');"><span>A</span></button>
-        
+       <td align="left">
+            <button onclick="document.execCommand('bold');"><b>B</b></button>
+            <button onclick="document.execCommand('italic');"><i>I</i></button>
+            <button onclick="document.execCommand('underline');"><u>U</u></button>
+            &nbsp;
+            <button onclick="document.execCommand('heading', false, 'H1');">H1</button>
+            <button onclick="document.execCommand('heading', false, 'H2');">H2</button>
+            <button onclick="document.execCommand('heading', false, 'H3');">H3</button>
+            <button onclick="saveNote();">Text</button>
+            &nbsp;
+            <button onclick="document.execCommand('decreaseFontSize');">A</button>
+            <button onclick="document.execCommand('decreaseFontSize');"><span>A</span></button>
+            &nbsp;
+            <button onclick="insertDate()">Now</button>
+       </td>
+       <td align="right">
+            <button onclick="clearNote()">Clear</button>
        </td>
     </tr>
 </table>
-<br>
-&nbsp;
+
 <div class="editable" contenteditable="true" spellcheck="true" id="noteNew"
     placeholder="Put your text here..."></div>
 
-<table align="right">
+<table align="right" border="0">
     <tr>
        <td>
-        <button onclick="downloadNoteNew()">Download</button>
+        <select title="Format" name="format" id="format">
+            <option value="txt">Plain text</option>
+            <option value="rtf">Rich text</option>
+            <option value="md">Markdown</option>
+            <option value="htm">HTML markup</option>
+        </select>
+        &nbsp;
+        <button onclick="downloadNoteNew();">Download</button>
        </td>
     </tr>
 </table>

@@ -51,6 +51,10 @@
         saveNote();
     }
 
+    window.onbeforeunload = function winBeforeUnload() {
+        saveNote();
+    }
+
 </script>
 
 <textarea id="note" spellcheck="true" rows="15"
