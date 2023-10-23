@@ -20,7 +20,7 @@
       console.log('WebPad - saveNote');
     }
 
-    function loadNote() {
+    function loadData() {
         var data = localStorage.getItem(VEditor.id);
         if (data) {
             VEditor.innerHTML = data;
@@ -99,7 +99,7 @@
     window.onload = function winLoad() {
         VEditor = document.getElementById(VIEW_ID_EDITOR);
         VFormat = document.getElementById(VIEW_ID_FORMAT);
-        loadNote();
+        loadData();
     };
 
     window.onchange = function winChange() {
