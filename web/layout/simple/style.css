@@ -122,7 +122,7 @@ table.menu {
 }
 
 textarea {
-    resize: none;
+    resize: vertical;
     font-size: 1em;
     margin: auto;
     outline: none;
