@@ -14,7 +14,7 @@
     var VEditor;
     var VFormat;
 
-    function saveNote() {
+    function saveData() {
       var data = VEditor.innerHTML;
       localStorage.setItem(VEditor.id, data);
       console.log('WebPad - saveNote');
@@ -103,15 +103,15 @@
     };
 
     window.onchange = function winChange() {
-        saveNote();
+        saveData();
     };
 
     window.onclose = function winClose() {
-        saveNote();
+        saveData();
     }
 
     window.onbeforeunload = function winBeforeUnload() {
-        saveNote();
+        saveData();
     }
 
     function convertHtmlToRtf(html) {
