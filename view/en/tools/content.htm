@@ -97,12 +97,6 @@
         document.execCommand('insertText', false, str);
     }
 
-    function formatText() {
-        var content = document.getElementById("note");
-        //content.style.fontStyle = "italic";
-        content.html("<b>Bold<b> text");
-    }
-
     window.onload = function winLoad() {
         VEditor = document.getElementById(VIEW_ID_EDITOR);
         VFormat = document.getElementById(VIEW_ID_FORMAT);
