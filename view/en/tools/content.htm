@@ -40,22 +40,24 @@
         var note = document.getElementById("noteNew");
         var format = document.getElementById("format").value;
         var content = '';
+        var mime = 'plain';
         
         if (format == 'rtf' || format == 'htm') {
             content = note.innerHTML;
+            mime = 'html';
             if (format == 'rtf') {
                 content = convertHtmlToRtf(content);
+                mime = 'rtf';
             }
         } else {
             content = note.outerText;
             content = content.replace(/\n\n/g, '\n');
-            format = 'plain';
         }
         
         var link = document.createElement("a");
         link.download = "my-note." + format;
         var data = new Blob([content], {
-            type: "text/" + format
+            type: "text/" + mime
         });
         link.href = window.URL.createObjectURL(data);
         link.click();
