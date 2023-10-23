@@ -11,9 +11,6 @@
     const VIEW_ID_EDITOR = 'webpad-editor';
     const VIEW_ID_FORMAT = 'webpad-format';
 
-    const STORAGE_KEY_DATA = 'webpad-data';
-    const STORAGE_KEY_FORMAT = 'webpad-format';
-
     var VEditor;
     var VFormat;
 
@@ -209,7 +206,7 @@
 <!-- Controls -->
 <table align="right" border="0"><tr><td>
     <!-- VFormat -->
-    <select title="Format" name="format" id="format">
+    <select title="Format" name="webpad-format" id="webpad-format">
         <option value="txt">Plain text</option>
         <option value="rtf">Rich text</option>
         <option value="md">Markdown</option>
