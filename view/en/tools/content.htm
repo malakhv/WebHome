@@ -15,15 +15,21 @@
     var VFormat;
 
     function saveData() {
-      var data = VEditor.innerHTML;
-      localStorage.setItem(VEditor.id, data);
-      console.log('WebPad - saveData');
+        var text = VEditor.innerHTML;
+        var format = VFormat.value;
+        localStorage.setItem(VEditor.id, text);
+        localStorage.setItem(VFormat.id, formar);
+        console.log('WebPad - saveData');
     }
 
     function loadData() {
-        var data = localStorage.getItem(VEditor.id);
-        if (data) {
+        var value = localStorage.getItem(VEditor.id);
+        if (value) {
             VEditor.innerHTML = data;
+        }
+        value = localStorage.getItem(VFormat.id);
+        if (value) {
+            VFormat.value = value;
         }
         console.log('WebPad - loadData');
     }
