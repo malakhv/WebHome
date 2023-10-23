@@ -54,27 +54,27 @@
         link.remove();
     }
 
-    function downloadNoteNew() {
-        var note = document.getElementById("noteNew");
-        var format = document.getElementById("format").value;
-        var content = '';
+    function downloadFile() {
+        var text = '';
+        var format = VFormat.value;
         var mime = 'plain';
         
         if (format == 'rtf' || format == 'htm') {
-            content = note.innerHTML;
-            mime = 'html';
+            text = note.innerHTML;
             if (format == 'rtf') {
-                content = convertHtmlToRtf(content);
+                text = convertHtmlToRtf(text);
                 mime = 'rtf';
+            } else {
+                mime = 'html';
             }
         } else {
-            content = note.outerText;
-            content = content.replace(/\n\n/g, '\n');
+            text = note.outerText;
+            text = text.replace(/\n\n/g, '\n');
         }
         
-        var link = document.createElement("a");
-        link.download = "my-note." + format;
-        var data = new Blob([content], {
+        var link = document.createElement('a');
+        link.download = 'my-note.' + format;
+        var data = new Blob([text], {
             type: "text/" + mime
         });
         link.href = window.URL.createObjectURL(data);
