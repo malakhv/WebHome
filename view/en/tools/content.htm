@@ -18,14 +18,14 @@
         var text = VEditor.innerHTML;
         var format = VFormat.value;
         localStorage.setItem(VEditor.id, text);
-        localStorage.setItem(VFormat.id, formar);
+        localStorage.setItem(VFormat.id, format);
         console.log('WebPad - saveData');
     }
 
     function loadData() {
         var value = localStorage.getItem(VEditor.id);
         if (value) {
-            VEditor.innerHTML = data;
+            VEditor.innerHTML = value;
         }
         value = localStorage.getItem(VFormat.id);
         if (value) {
@@ -48,7 +48,7 @@
         var mime = 'plain';
         
         if (format == 'rtf' || format == 'htm') {
-            text = note.innerHTML;
+            text = VEditor.innerHTML;
             if (format == 'rtf') {
                 text = convertHtmlToRtf(text);
                 mime = 'rtf';
@@ -56,10 +56,10 @@
                 mime = 'html';
             }
         } else {
-            text = note.outerText;
+            text = VEditor.outerText;
             text = text.replace(/\n\n/g, '\n');
         }
-        
+
         var link = document.createElement('a');
         link.download = 'my-note.' + format;
         var data = new Blob([text], {
