@@ -80,7 +80,7 @@
         str += v + '.';
         
         // Month and Year
-        v = now.getMonth();
+        v = now.getMonth() + 1;
         if (v < 10) str += '0';
         str += v + '.' + now.getFullYear() + ' - ';
         
@@ -188,7 +188,7 @@
     <button onclick="document.execCommand('decreaseFontSize');"><span>A</span></button>
     &nbsp;
     <!-- Insert any stuff -->
-    <button onclick="insertDate()">Now</button>
+    <button onclick="insertDateTime()">Now</button>
 </td>
 <td align="right">
     <!-- Clear data -->
