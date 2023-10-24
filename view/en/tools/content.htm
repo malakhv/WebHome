@@ -8,33 +8,61 @@
 
 <script>
 
-    const VIEW_ID_EDITOR = 'webpad-editor';
-    const VIEW_ID_FORMAT = 'webpad-format';
+    /**
+     * Aligns the value with zeros.
+     * */
+    function leadingZero(count, val) {
+        return ('' + val).padStart(count, '0');
+    }
 
+    /**
+     * Executes document's command with default arguments.
+     * */
+    function execCommand(command) {
+        document.execCommand(command, false, null);
+    }
+
+</script>
+
+<script>
+
+    /** View: Editor. */
+    const VIEW_EDITOR_ID = 'webpad-editor';
+    const VIEW_EDITOR_HEIGHT = 'webpad-editor-height';
     var VEditor;
-    var VFormat;
 
+    /** View: File formats. */
+    const VIEW_FORMAT_ID = 'webpad-format';
+
+    /**
+     * Saves WebPad data to local storage.
+     * */
     function saveData() {
         var text = VEditor.innerHTML;
         var format = VFormat.value;
         localStorage.setItem(VEditor.id, text);
+        //localStorage.setItem(VIEW_EDITOR_HEIGHT, VEditor.offsetHeight);
         localStorage.setItem(VFormat.id, format);
         console.log('WebPad - saveData');
     }
 
+    /**
+     * Loads WebPad data from local storage.
+     * */
     function loadData() {
         var value = localStorage.getItem(VEditor.id);
-        if (value) {
-            VEditor.innerHTML = value;
-        }
+        if (value) VEditor.innerHTML = value;
+        //value = localStorage.getItem(VIEW_EDITOR_HEIGHT);
+        //if (value) VEditor.style.height = value + 'px';
         value = localStorage.getItem(VFormat.id);
-        if (value) {
-            VFormat.value = value;
-        }
+        if (value) VFormat.value = value;
         console.log('WebPad - loadData');
     }
-    
-    function clearData() {
+
+    /**
+     * Clears entered text in Editor and local storage.
+     * */
+    function clearText() {
         if (confirm('Are you sure you want to clear text?')) {
             VEditor.innerHTML = '';
             saveData();
@@ -71,36 +99,52 @@
     }
 
     function insertDateTime() {
+
+        function format(val) {
+            return leadingZero(2, val);
+        }
+
         var str = '[';
         var now = new Date();
-        
-        // Day
-        var v = now.getDate();
-        if (v < 10) str += '0';
-        str += v + '.';
-        
-        // Month and Year
-        v = now.getMonth() + 1;
-        if (v < 10) str += '0';
-        str += v + '.' + now.getFullYear() + ' - ';
-        
-        // Hours
-        v = now.getHours();
-        if (v < 10) str += '0';
-        str += v + ':';
-        
-        // Minutes
-        v = now.getMinutes();
-        if (v < 10) str += '0';
-        str += v + ']';
-        
+
+        str += format(now.getDate()) + '.';
+        str += format(now.getMonth() + 1) + '.';
+        str += now.getFullYear() + ' - ';
+        str += format(now.getHours()) + ':';
+        str += format(now.getMinutes()) + ']';
+
         document.execCommand('insertText', false, str);
     }
 
     window.onload = function winLoad() {
-        VEditor = document.getElementById(VIEW_ID_EDITOR);
-        VFormat = document.getElementById(VIEW_ID_FORMAT);
+        //document.execCommand('defaultParagraphSeparator', false, 'p');
+        VEditor = document.getElementById(VIEW_EDITOR_ID);
+        VFormat = document.getElementById(VIEW_FORMAT_ID);
         loadData();
+
+
+        VEditor.addEventListener('keydown', function(event) {
+      if (event.key === 'Tab') {
+        event.preventDefault(); // Prevent default action of Tab key
+    
+        var tabNode = this.ownerDocument.createTextNode("\t");
+    
+        var sel = this.getRootNode().getSelection();
+        if (!sel.rangeCount) return false;
+        
+        var range = sel.getRangeAt(0);
+        range.insertNode(tabNode);
+    
+        var newRange = document.createRange();
+        newRange.setStartAfter(tabNode);
+        newRange.setEndAfter(tabNode); 
+    
+        sel.removeAllRanges();
+        sel.addRange(newRange);
+      }
+    });
+
+
     };
 
     window.onchange = function winChange() {
@@ -113,6 +157,23 @@
 
     window.onbeforeunload = function winBeforeUnload() {
         saveData();
+    }
+
+
+    function onKeyDown(e) {
+        alert(e.keyCode === 9);
+        if (e.keyCode === 9) {
+            e.preventDefault();
+            var doc = VEditor.ownerDocument.defaultView;
+            var sel = doc.getSelection();
+            var range = sel.getRangeAt(0);
+            var tabNode = document.createTextNode("\t");
+            range.insertNode(tabNode);
+            range.setStartAfter(tabNode);
+            range.setEndAfter(tabNode); 
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
     }
 
     function convertHtmlToRtf(html) {
@@ -172,17 +233,22 @@
 <!-- Controls -->
 <table class="controls" border="0"><tr>
 <td align="left">
-    <!-- Text format (bold, italic, underline) -->
-    <button onclick="document.execCommand('bold');"><b>B</b></button>
-    <button onclick="document.execCommand('italic');"><i>I</i></button>
-    <button onclick="document.execCommand('underline');"><u>U</u></button>
-    &nbsp;
+    <!-- Text format (bold, italic, underline, etc) -->
+    <button title="Bold" onclick="execCommand('bold');"><b>B</b></button>
+    <button title="Italic" onclick="execCommand('italic');"><i>I</i></button>
+    <button title="Underline" onclick="execCommand('underline');"><u>U</u></button>
+    <button title="Strikethrough" onclick="execCommand('strikethrough');"><strike>S</strike></button>
+    &nbsp;&nbsp;
+    <button title="Unordered list" onclick="execCommand('insertUnorderedList');">&bull;</button>
+    <button title="Ordered list" onclick="execCommand('insertOrderedList');">1</button>
+    <button title="Line" onclick="execCommand('insertHorizontalRule');">-</button>
+    &nbsp;&nbsp;
     <!-- Headers -->
-    <button onclick="document.execCommand('heading', false, 'H1');">H1</button>
-    <button onclick="document.execCommand('heading', false, 'H2');">H2</button>
-    <button onclick="document.execCommand('heading', false, 'H3');">H3</button>
+    <button onclick="execCommand('heading', false, 'H1');">H1</button>
+    <button onclick="execCommand('heading', false, 'H2');">H2</button>
+    <button onclick="execCommand('heading', false, 'H3');">H3</button>
     <button onclick="saveNote();">Save</button>
-    &nbsp;
+    &nbsp;&nbsp;
     <!-- Font size -->
     <button onclick="document.execCommand('fontSize', false, 5);">A</button>
     <button onclick="document.execCommand('decreaseFontSize');"><span>A</span></button>
@@ -192,7 +258,7 @@
 </td>
 <td align="right">
     <!-- Clear data -->
-    <button onclick="clearData()">Clear</button>
+    <button onclick="clearText()">Clear</button>
 </td></tr></table>
 
 <!-- VEditor -->

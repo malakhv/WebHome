@@ -143,20 +143,31 @@ textarea:active {
     outline: none;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-    border: 1px solid #ccc;
+    border: 1px solid #777777;
     padding: 0.4em;
-    white-space: pre-line;
-    display: inline-block;
-    word-wrap: break-word;
+    white-space: pre-wrap;
+    tab-size: 4;
+    overflow: scroll;
+    /* display: inline-block; */
+    /* word-wrap: break-word; */
 }
 
 .controls {
     width: 100%;
 }
 
+button {
+    min-width: 2em;
+    min-height: 2em;
+    text-align: center;
+    vertical-align: middle;
+}
+
 select {
     outline: none;
-    border: solid 1px silver;
+    /* min-height: 2em; */
+    /* border: solid 1px silver; */
+    border: solid 1px #777777;
 }
 
 .header-sup {
