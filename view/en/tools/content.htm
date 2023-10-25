@@ -115,31 +115,31 @@
         document.execCommand('insertText', false, str);
     }
 
+    function onKeyDown(event) {
+        if (event.key !== 'Tab') return false;
+        // Prevent default action of Tab key
+        event.preventDefault();
+        //var tabNode = this.ownerDocument.createTextNode("\t");
+        var tabNode = VEditor.ownerDocument.createTextNode('    ');
+        var sel = VEditor.getRootNode().getSelection();
+        if (!sel.rangeCount) return false;
+        var range = sel.getRangeAt(0);
+        range.insertNode(tabNode);
+        var newRange = document.createRange();
+        newRange.setStartAfter(tabNode);
+        newRange.setEndAfter(tabNode);
+        sel.removeAllRanges();
+        sel.addRange(newRange);
+    }
+
     window.onload = function winLoad() {
         //document.execCommand('defaultParagraphSeparator', false, 'p');
         VEditor = document.getElementById(VIEW_EDITOR_ID);
         VFormat = document.getElementById(VIEW_FORMAT_ID);
         loadState();
-
-        // Tab processing
         VEditor.addEventListener('keydown', function(event) {
-            if (event.key === 'Tab') {
-                // Prevent default action of Tab key
-                event.preventDefault();
-                //var tabNode = this.ownerDocument.createTextNode("\t");
-                var tabNode = this.ownerDocument.createTextNode('    ');
-                var sel = this.getRootNode().getSelection();
-                if (!sel.rangeCount) return false;
-                var range = sel.getRangeAt(0);
-                range.insertNode(tabNode);
-                var newRange = document.createRange();
-                newRange.setStartAfter(tabNode);
-                newRange.setEndAfter(tabNode);
-                sel.removeAllRanges();
-                sel.addRange(newRange);
-        }
-    });
-
+            onKeyDown(event);
+        });
     };
 
     function printDoc() {
