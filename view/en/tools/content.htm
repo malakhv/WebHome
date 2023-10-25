@@ -18,8 +18,15 @@
     /**
      * Executes document's command with default arguments.
      * */
-    function execCommand(command) {
+    function execCmd(command) {
         document.execCommand(command, false, null);
+    }
+
+    /**
+     * Inserts specified text to current position.
+     * */
+    function insertText(text) {
+        document.execCommand('insertText', false, text);
     }
 
 </script>
@@ -83,8 +90,8 @@
                 mime = 'html';
             }
         } else {
-            text = VEditor.outerText;
-            //text = text.replace(/\n\n/g, '\n');
+            text = VEditor.innerText;
+            //text = text.replace(/\n\n/g, '\n'); // ???
         }
 
         var link = document.createElement('a');
@@ -112,7 +119,7 @@
         str += format(now.getHours()) + ':';
         str += format(now.getMinutes()) + ']';
 
-        document.execCommand('insertText', false, str);
+        insertText(str);
     }
 
     function onKeyDown(event) {
@@ -209,43 +216,31 @@
 
 </script>
 
-<textarea id="note" spellcheck="true" hidden="true" rows="15"
-    placeholder="Put your text here...">
-</textarea>
-
-<table align="right" hidden="true"><tr><td>
-    <button onclick="clearData()">Clear</button>
-    <button onclick="formatText()">Format</button>
-    <button onclick="downloadNoteNew()">Download</button>
-</td></tr></table>
-
-<!-- Controls -->
+<!-- Text formatting controls and clear. -->
 <table class="controls" border="0"><tr>
 <td align="left">
+
     <!-- Text format (bold, italic, underline, etc) -->
-    <button title="Bold" onclick="execCommand('bold');"><b>B</b></button>
-    <button title="Italic" onclick="execCommand('italic');"><i>I</i></button>
-    <button title="Underline" onclick="execCommand('underline');"><u>U</u></button>
-    <button title="Strikethrough" onclick="execCommand('strikethrough');"><strike>S</strike></button>
+    <button title="Bold"onclick="execCmd('bold');">
+        <b>B</b></button>
+    <button title="Italic" onclick="execCmd('italic');">
+        <i>I</i></button>
+    <button title="Underline" onclick="execCmd('underline');">
+        <u>U</u></button>
+    <button title="Strikethrough" onclick="execCmd('strikethrough');">
+        <strike>S</strike></button>
     &nbsp;&nbsp;
-    <button title="Unordered list" onclick="execCommand('insertUnorderedList');">&bull;</button>
-    <button title="Ordered list" onclick="execCommand('insertOrderedList');">1</button>
-    <button title="Line" onclick="execCommand('insertHorizontalRule');">-</button>
-    &nbsp;&nbsp;
-    <!-- Headers -->
-    <button onclick="execCommand('heading', false, 'H1');">H1</button>
-    <button onclick="execCommand('heading', false, 'H2');">H2</button>
-    <button onclick="execCommand('heading', false, 'H3');">H3</button>
-    <button onclick="saveNote();">Save</button>
-    &nbsp;&nbsp;
-    <!-- Font size -->
-    <button onclick="document.execCommand('fontSize', false, 5);">A</button>
-    <button onclick="document.execCommand('decreaseFontSize');"><span>A</span></button>
-    &nbsp;
-    <!-- Insert any stuff -->
-    <button onclick="insertDateTime()"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M384.225-299.384q-33.302 0-57.071-23.544t-23.769-56.847q0-33.302 23.543-57.071 23.544-23.769 56.847-23.769 33.302 0 57.071 23.544 23.769 23.543 23.769 56.846 0 33.302-23.543 57.071-23.544 23.77-56.847 23.77ZM240.615-136q-24.315 0-40.465-16.5Q184-169 184-192.615v-478.77Q184-695 200.15-711.5 216.3-728 240.615-728h102.769v-105.231h35.077V-728h206.154v-105.231h32.001V-728h102.769q24.315 0 40.465 16.5Q776-695 776-671.385v478.77Q776-169 759.85-152.5 743.7-136 719.385-136h-478.77Zm0-32h478.77q9.23 0 16.923-7.692Q744-183.385 744-192.615v-310.77H216v310.77q0 9.23 7.692 16.923Q231.385-168 240.615-168ZM216-535.385h528v-136q0-9.23-7.692-16.923Q728.615-696 719.385-696h-478.77q-9.23 0-16.923 7.692Q216-680.615 216-671.385v136Zm0 0V-696v160.615Z"/></svg></button>
-</td>
-<td align="right">
+    <!-- Insert (lists, line, data, etc) -->
+    <button title="Unordered list" onclick="execCmd('insertUnorderedList');">
+        &bull;-</button>
+    <button title="Ordered list" onclick="execCmd('insertOrderedList');">
+        1-</span></button>
+    <button title="Line" onclick="execCmd('insertHorizontalRule');">
+        -</button>
+    <button title="Current date and time" onclick="insertDateTime()">
+        Now</button>
+
+</td><td align="right">
     <!-- Clear data -->
     <button onclick="clearText()">Clear</button>
 </td></tr></table>
@@ -258,23 +253,21 @@
 <!-- Controls -->
 <table class="controls" border="0"><tr>
 
+<!-- Print -->
 <td align="left">
-    <button onclick="printDoc();">Print</button>
+    <button title="Print or save as PDF..." onclick="printDoc();">Print</button>
 </td>
-
 
 <td align="right">
     <!-- VFormat -->
-    <select title="Format" name="webpad-format" id="webpad-format">
+    <select title="File format" name="webpad-format" id="webpad-format">
         <option value="txt">Plain text</option>
         <option value="rtf">Rich text</option>
         <option value="md">Markdown</option>
         <option value="htm">HTML markup</option>
     </select>&nbsp;
     <!-- Download -->
-    <button onclick="downloadFile();">Download</button>
+    <button title="Download as file..." onclick="downloadFile();">Download</button>
 </td>
 
-</tr></table>
-
-&nbsp;<br>&nbsp;<br>
+</tr></table><br>

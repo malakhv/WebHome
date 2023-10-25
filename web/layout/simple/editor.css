@@ -21,18 +21,18 @@
 }
 
 .editable {
-    resize: vertical;
     width: 98.5%;
     height: 200px;
     outline: none;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-    border: 1px solid #777777;
     padding: 0.4em;
     white-space: pre-wrap;
     tab-size: 4;
     overflow: scroll;
-    /* display: inline-block; */
+    resize: vertical;
+    display: flexbox;
+    border: 1px solid #777777;
     /* word-wrap: break-word; */
 }
 
