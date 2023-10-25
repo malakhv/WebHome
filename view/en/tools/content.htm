@@ -35,28 +35,27 @@
     const VIEW_FORMAT_ID = 'webpad-format';
 
     /**
-     * Saves WebPad data to local storage.
+     * Saves WebPad state to local storage.
      * */
-    function saveData() {
+    function saveState() {
         var text = VEditor.innerHTML;
         var format = VFormat.value;
         localStorage.setItem(VEditor.id, text);
-        //localStorage.setItem(VIEW_EDITOR_HEIGHT, VEditor.offsetHeight);
         localStorage.setItem(VFormat.id, format);
-        console.log('WebPad - saveData');
+        console.log('WebPad - saveState');
     }
 
     /**
-     * Loads WebPad data from local storage.
+     * Loads WebPad state from local storage.
      * */
-    function loadData() {
+    function loadState() {
         var value = localStorage.getItem(VEditor.id);
         if (value) VEditor.innerHTML = value;
         //value = localStorage.getItem(VIEW_EDITOR_HEIGHT);
         //if (value) VEditor.style.height = value + 'px';
         value = localStorage.getItem(VFormat.id);
         if (value) VFormat.value = value;
-        console.log('WebPad - loadData');
+        console.log('WebPad - loadState');
     }
 
     /**
@@ -65,7 +64,7 @@
     function clearText() {
         if (confirm('Are you sure you want to clear text?')) {
             VEditor.innerHTML = '';
-            saveData();
+            saveState();
         }
         console.log('WebPad - clearData');
     }
@@ -120,7 +119,7 @@
         //document.execCommand('defaultParagraphSeparator', false, 'p');
         VEditor = document.getElementById(VIEW_EDITOR_ID);
         VFormat = document.getElementById(VIEW_FORMAT_ID);
-        loadData();
+        loadState();
 
 
         VEditor.addEventListener('keydown', function(event) {
@@ -148,15 +147,15 @@
     };
 
     window.onchange = function winChange() {
-        saveData();
+        saveState();
     };
 
     window.onclose = function winClose() {
-        saveData();
+        saveState();
     }
 
     window.onbeforeunload = function winBeforeUnload() {
-        saveData();
+        saveState();
     }
 
 
