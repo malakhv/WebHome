@@ -1,6 +1,6 @@
-<h2>Notepad</h2>
+<h2 class="noprint">Notepad</h2>
 
-<p>
+<p class="noprint">
     This is a simple notepad without text formatting (will be added later) and
     with spell check feature. Notepad doesn't send the entered text anywhere,
     but only saves it in a secure local storage.
@@ -121,30 +121,37 @@
         VFormat = document.getElementById(VIEW_FORMAT_ID);
         loadState();
 
-
+        // Tab processing
         VEditor.addEventListener('keydown', function(event) {
-      if (event.key === 'Tab') {
-        event.preventDefault(); // Prevent default action of Tab key
-    
-        var tabNode = this.ownerDocument.createTextNode("\t");
-    
-        var sel = this.getRootNode().getSelection();
-        if (!sel.rangeCount) return false;
-        
-        var range = sel.getRangeAt(0);
-        range.insertNode(tabNode);
-    
-        var newRange = document.createRange();
-        newRange.setStartAfter(tabNode);
-        newRange.setEndAfter(tabNode); 
-    
-        sel.removeAllRanges();
-        sel.addRange(newRange);
-      }
+            if (event.key === 'Tab') {
+                // Prevent default action of Tab key
+                event.preventDefault();
+                //var tabNode = this.ownerDocument.createTextNode("\t");
+                var tabNode = this.ownerDocument.createTextNode('    ');
+                var sel = this.getRootNode().getSelection();
+                if (!sel.rangeCount) return false;
+                var range = sel.getRangeAt(0);
+                range.insertNode(tabNode);
+                var newRange = document.createRange();
+                newRange.setStartAfter(tabNode);
+                newRange.setEndAfter(tabNode);
+                sel.removeAllRanges();
+                sel.addRange(newRange);
+        }
     });
 
-
     };
+
+    function printDoc() {
+        window.print();
+        //var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+        //var WinPrint = window.open('', '', '');
+        //window.document.write(VEditor.innerHTML);
+        //window.document.close();
+        //window.focus();
+        //window.print();
+        //WinPrint.close();
+    }
 
     window.onchange = function winChange() {
         saveState();
@@ -156,23 +163,6 @@
 
     window.onbeforeunload = function winBeforeUnload() {
         saveState();
-    }
-
-
-    function onKeyDown(e) {
-        alert(e.keyCode === 9);
-        if (e.keyCode === 9) {
-            e.preventDefault();
-            var doc = VEditor.ownerDocument.defaultView;
-            var sel = doc.getSelection();
-            var range = sel.getRangeAt(0);
-            var tabNode = document.createTextNode("\t");
-            range.insertNode(tabNode);
-            range.setStartAfter(tabNode);
-            range.setEndAfter(tabNode); 
-            sel.removeAllRanges();
-            sel.addRange(range);
-        }
     }
 
     function convertHtmlToRtf(html) {
@@ -253,7 +243,7 @@
     <button onclick="document.execCommand('decreaseFontSize');"><span>A</span></button>
     &nbsp;
     <!-- Insert any stuff -->
-    <button onclick="insertDateTime()">Now</button>
+    <button onclick="insertDateTime()">12:15</button>
 </td>
 <td align="right">
     <!-- Clear data -->
@@ -266,7 +256,14 @@
 </div>
 
 <!-- Controls -->
-<table align="right" border="0"><tr><td>
+<table class="controls" border="0"><tr>
+
+<td align="left">
+    <button onclick="printDoc();">Print</button>
+</td>
+
+
+<td align="right">
     <!-- VFormat -->
     <select title="Format" name="webpad-format" id="webpad-format">
         <option value="txt">Plain text</option>
@@ -276,6 +273,8 @@
     </select>&nbsp;
     <!-- Download -->
     <button onclick="downloadFile();">Download</button>
-</td></tr></table>
+</td>
+
+</tr></table>
 
 &nbsp;<br>&nbsp;<br>
