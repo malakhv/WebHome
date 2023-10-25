@@ -20,6 +20,7 @@ function MakeHtmlHead($title = 'Mikhail Malakhov', $keywords = '', $description 
     echo '  <meta name="description" content="'.$description.'" />'.PHP_EOL;
     echo '  <meta http-equiv="content-type" content="text/html; charset=utf-8" />'.PHP_EOL;
     echo '  <link href="./web/layout/'.THEME.'/style.css" rel="stylesheet" type="text/css" media="screen" />'.PHP_EOL;
+    echo '  <link href="./web/layout/'.THEME.'/editor.css" rel="stylesheet" type="text/css" media="screen" />'.PHP_EOL;
     echo '  <link rel="icon" href="./web/media/fav-128.png" type="image/png">'.PHP_EOL;
     echo '  <link rel="shortcut icon" href="./web/media/fav-256.png" type="image/png">'.PHP_EOL;
     echo '  <title>'.$title.'</title>'.PHP_EOL;

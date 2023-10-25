@@ -121,58 +121,6 @@ table.menu {
     margin-right: auto;
 }
 
-textarea {
-    resize: vertical;
-    font-size: 1em;
-    margin: auto;
-    outline: none;
-    padding: 0.4em;
-    width: 98.5%;
-    align-self: center;
-    border: solid 1px silver;
-}
-
-textarea:active {
-    border: solid 1px silver;
-}
-
-.editable {
-    resize: vertical;
-    width: 98.5%;
-    height: 200px;
-    outline: none;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    border: 1px solid #777777;
-    padding: 0.4em;
-    white-space: pre-wrap;
-    tab-size: 4;
-    overflow: scroll;
-    /* display: inline-block; */
-    /* word-wrap: break-word; */
-}
-
-.controls {
-    width: 100%;
-}
-
-button {
-    min-width: 2em;
-    min-height: 2em;
-    text-align: center;
-    vertical-align: middle;
-}
-
-select {
-    outline: none;
-    min-height: 1.9em;
-    border: solid 1px #777777;
-}
-
-@media print {
-    .noprint { display:none; }
-}
-
 .header-sup {
     font-size: 0.7em;
     font-style: italic;
