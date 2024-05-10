@@ -9,9 +9,9 @@
 
 <p>
     Yandex Automotive Platform (YAP, <a target="_blank" href="https://auto.yandex/">Yandex Auto</a>)
-    is a solution based on Android Automotive OS that combines Yandex services (such as Navigation,
-    Alice, Music, Fuel, Parking, Weather, Kinopoisk, etc) and makes them convenient to use in a
-    vehicle.
+    is a solution based on Android Automotive OS (AAOS) that combines Yandex services (such as
+    Navigation, Alice, Music, Fuel, Parking, Weather, Kinopoisk, etc) and makes them convenient to
+    use in a vehicle.
 </p>
 
 <p>
@@ -48,8 +48,47 @@
 <h3>System Development Team Leader</h3>
 
 <p>
-    <i>May 2020 — Dec 2020</i>. In this role, as head of System Development
+    <i>May 2020 — Dec 2020</i>. In this role, as lead of System Development
     team, I managed the development of IVI system components such as:
     WindowManager, PackageManager, PowerManager, AudioManager, Telecom,
     Bluetooth, etc.
 </p>
+
+<p>
+    Our team worked together with engineers from France, South Korea and China
+    to integrate the Yandex Auto HMI into vehicles.
+</p>
+
+<h3>Senior Android Framework Developer</h3>
+
+<p>
+    <i>Sep 2017 — May 2020</i>. In this role my responsibilities was: development pre-installed
+    software for vehicle IVI; customize the Android framework; adaptation Android Automotive API;
+    building the Android system; making an Android Emulator with special features and SDK Add-On
+    to integrate it into AndroidStudio.
+</p>
+
+<p>
+    I was the main developer and maintainer of Yandex Automotive Platform key system's components:
+</p>
+
+<ul>
+
+    <li>YAP Window System — The special windows composition is the key feature of Yandex
+        Automotive Platform User Interface (YAP UI). It means the all user interactions with IVI
+        performs with consideration of YAP windows composition which implemented in Android. This
+        component is an extension of Android PhoneWindowManager with supporting new windows' types
+        and logic to them layout.</li>
+
+    <li>YAP Special Signature — A set of changes in Android PackageManager to support second
+        platform signature, which automatically grants specified system permissions to selected HMI
+        components.</li>
+
+    <li>YAP Dynamic DPI System — This component necessary to change default DPI for selected
+        applications in IVI depending on external conditions. Ultimately, this affects the scale of
+        the application user interface.</li>
+    
+    <li>Head Unit Emulator with all our system and HMI components and SDK Add-On to integrate it
+        into Android Studio.</li>
+
+</ul>
