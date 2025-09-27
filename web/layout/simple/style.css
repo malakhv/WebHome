@@ -112,6 +112,29 @@ td {
 td th {
     text-align: left;
     vertical-align: top;
+    border-style: none;
+    border-width: 0px;
+}
+
+td.c {
+    text-align: center;
+}
+
+table.symbol {
+    border-collapse: collapse;
+}
+
+table.symbol th {
+    border: 1px solid black;
+}
+
+table.symbol td {
+    border: 1px solid black;
+    padding: 0.3em;
+}
+
+table.symbol tr:nth-child(even) {
+  background-color: #D6EEEE;
 }
 
 table.menu {
@@ -119,6 +142,8 @@ table.menu {
     margin-bottom: -0.6em;
     margin-left: auto; 
     margin-right: auto;
+    border-style: none;
+    border-width: 0px;
 }
 
 .header-sup {
