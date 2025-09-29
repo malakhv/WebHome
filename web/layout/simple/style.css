@@ -117,6 +117,7 @@ table.symbol th {
 
 table.symbol td {
     text-align: center;
+    vertical-align: middle;
     padding: 0.3em;
     border: 1px solid black;
 }
@@ -130,6 +131,31 @@ table.symbol td.left {
 }
 
 table.symbol th.left {
+    text-align: left;
+}
+
+table.travel {
+    border-collapse: collapse;
+}
+
+table.travel th {
+    text-align: center;
+    padding: 0.3em;
+    border: 1px solid black;
+}
+
+table.travel td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.3em;
+    border: 1px solid black;
+}
+
+table.travel td.left {
+    text-align: left;
+}
+
+table.travel th.left {
     text-align: left;
 }
 
