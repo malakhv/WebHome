@@ -1,6 +1,6 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC",
-        "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
+        "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
     font-size: 15px;
     padding: 0 12px;
     line-height: 22px;
@@ -94,10 +94,7 @@ ul.cats {
     margin: 0px;
 }
 
-td {
-    vertical-align: top;
-}
-
+/* General Table */
 td th {
     text-align: left;
     vertical-align: top;
@@ -105,6 +102,26 @@ td th {
     border-width: 0px;
 }
 
+/* Table - List */
+table.list {
+    width: 100%;
+}
+
+table.list td {
+    text-align: left;
+    vertical-align: top;
+    width: 20%;
+}
+
+table.list td.last {
+    width: unset;
+}
+
+table.list ul {
+    margin: 0px;
+}
+
+/* Table - Symbol */
 table.symbol {
     border-collapse: collapse;
 }
