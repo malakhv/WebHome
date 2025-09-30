@@ -94,9 +94,14 @@ ul.cats {
     margin: 0px;
 }
 
+/*----------------------------------------------------------------------------*/
 /* General Table */
+/*----------------------------------------------------------------------------*/
+
 table {
-    /* Removing the indentation between table and thead/tbody. */
+    border-style: none;
+    border-width: 0px;
+    /* Prevents additional indent between table and thead/tbody. */
     border-collapse: collapse;
 }
 
@@ -107,7 +112,10 @@ td th {
     border-width: 0px;
 }
 
-/* Table - List */
+/*----------------------------------------------------------------------------*/
+/* Table - List                                                               */
+/*----------------------------------------------------------------------------*/
+
 table.list {
     width: 100%;
 }
@@ -120,17 +128,22 @@ table.list td {
     vertical-align: top;
 }
 
+/* All remaining space should be available for the last column. */
 table.list td.last {
-    width: unset; /* All the remaining space. */
+    width: unset;
 }
 
+/* There is no additional indent for the list into table cell. */
 table.list ul {
     margin: 0px;
 }
 
-/* Table - Symbol */
+/*----------------------------------------------------------------------------*/
+/* Table - Symbol                                                             */
+/*----------------------------------------------------------------------------*/
+
 table.symbol {
-    border-collapse: collapse;
+    width: 100%;
 }
 
 table.symbol th {
@@ -150,16 +163,20 @@ table.symbol tr:nth-child(even) {
   background-color: #D6EEEE;
 }
 
-table.symbol td.left {
-    text-align: left;
-}
-
 table.symbol th.left {
     text-align: left;
 }
 
+table.symbol td.left {
+    text-align: left;
+}
+
+/*----------------------------------------------------------------------------*/
+/* Table - Travel                                                             */
+/*----------------------------------------------------------------------------*/
+
 table.travel {
-    border-collapse: collapse;
+    width: 100%;
 }
 
 table.travel th {
@@ -183,6 +200,10 @@ table.travel th.left {
     text-align: left;
 }
 
+/*----------------------------------------------------------------------------*/
+/* Table - Menu                                                               */
+/*----------------------------------------------------------------------------*/
+
 table.menu {
     margin-top: -0.8em;
     margin-bottom: -0.6em;
@@ -191,6 +212,8 @@ table.menu {
     border-style: none;
     border-width: 0px;
 }
+
+/*----------------------------------------------------------------------------*/
 
 .header-sup {
     font-size: 0.7em;
