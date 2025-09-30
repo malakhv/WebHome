@@ -95,6 +95,11 @@ ul.cats {
 }
 
 /* General Table */
+table {
+    /* Removing the indentation between table and thead/tbody. */
+    border-collapse: collapse;
+}
+
 td th {
     text-align: left;
     vertical-align: top;
@@ -108,15 +113,15 @@ table.list {
 }
 
 table.list td {
-    text-align: left;
-    vertical-align: top;
     width: 20%;
     padding: 0px;
     margin: 0px;
+    text-align: left;
+    vertical-align: top;
 }
 
 table.list td.last {
-    width: unset;
+    width: unset; /* All the remaining space. */
 }
 
 table.list ul {
