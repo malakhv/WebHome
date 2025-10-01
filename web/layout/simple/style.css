@@ -132,6 +132,9 @@ table.list td {
 table.list td.last {
     width: unset;
 }
+table.list td:nth-last-child(0n+1) {
+    width: unset;
+}
 
 /* There is no additional indent for the list into table cell. */
 table.list ul {
