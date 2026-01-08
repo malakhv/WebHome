@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-
 <html>
 
-<?php MakeHtmlHead(getPageTitle()); ?>
+<?php
+    MakeHtmlHead(getPageTitle());
+?>
 
 <body><div id="content">
 
@@ -10,9 +11,6 @@
     InsertPageHeader();
     InsertMenu();
     ApplyContent();
-?>
-
-<?php
     InsertPageFooter();
 ?>
 
