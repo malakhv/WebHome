@@ -1,12 +1,7 @@
 <!--
-    Copyright (C) 1996-2023 Mikhail.Malakhov <malakhv@gmail.com>
+    Copyright (C) 1996-2026 Mikhail.Malakhov <malakhv@gmail.com>
 
     This file is a part of WebHome project.
-
-    Confidential and Proprietary. All Rights Reserved.
-
-    Unauthorized copying of this file, via any medium is strictly
-    prohibited.
 -->
 
 <?php
